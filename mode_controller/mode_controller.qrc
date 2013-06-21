@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>axial_controller.png</file>
+    </qresource>
+</RCC>
