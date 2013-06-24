@@ -61,11 +61,13 @@ void mode_kinect::work(){
     QMutexLocker locker(khelper->mutex());       
 
     /// Now process the RGB buffer
-    QImage& rgb = khelper->colorBuffer();
+    rgb = khelper->colorBuffer();
     for (int w = 0; w<rgb.width(); ++w){
         for(int h = 0; h<rgb.height(); ++h){
-            rgb.pixel(w,h);
-            /*..... DO SOMETHING ....*/                
+            // rgb.pixel(w,h);
+            rgb.setPixel(w,h, 0);
+
+            /*..... DO SOMETHING ....*/
         }
     }
     
@@ -77,6 +79,9 @@ void mode_kinect::work(){
             /*..... DO SOMETHING ....*/                
         }
     }
+
+//    drawArea()->updateGL();
+//    QApplication::processEvents();
 }
 
 void mode_kinect::decorate(){
@@ -84,5 +89,5 @@ void mode_kinect::decorate(){
     /// do something special simply define your local function
     QMutexLocker locker(khelper->mutex());
     khelper->drawCloud();
-    khelper->drawColor();
+    khelper->drawColor(&rgb);
 }

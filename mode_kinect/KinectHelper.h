@@ -109,7 +109,7 @@ signals:
     
 /// @{ Color GUI support
 public slots:
-    void drawColor();
+    void drawColor(QImage* image= NULL);
     void setWidget(QWidget* widget){ this->widget = widget; }
     void setColorLabel(QLabel* label){ this->colorLabel = label; }
 private:

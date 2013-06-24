@@ -131,7 +131,7 @@ void KinectHelper::autoCreateWidgetsIfNecessary(){
     widget->show();    
 }
 
-void KinectHelper::drawColor(){
+void KinectHelper::drawColor(QImage *image){
     Q_ASSERT(!mutex()->tryLock());
     /// Don't bother drawing empty image
     if(!data_ready())
@@ -140,8 +140,10 @@ void KinectHelper::drawColor(){
     /// You didn't give me anything, I will instantiate it! 
     autoCreateWidgetsIfNecessary();
         
-    /// Maybe this is not even necessary?
-    colorLabel->setPixmap(QPixmap::fromImage(*color_front_buffer));
+    if(image==NULL)
+        colorLabel->setPixmap(QPixmap::fromImage(*color_front_buffer));     ///< Maybe this is not even necessary?
+    else
+        colorLabel->setPixmap(QPixmap::fromImage(*image));     ///< Maybe this is not even necessary?
 }
 
 void KinectHelper::updateDepthFrame(openni::VideoFrameRef frame){
