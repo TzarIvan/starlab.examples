@@ -14,8 +14,10 @@ class mode_kinect : public ModePlugin{
     bool isApplicable(){  return true; }
     void create();
     bool documentChanged(){ return true; }
-    KinectHelper* khelper;
 
+private:
+    KinectHelper* khelper;
+    QImage rgb;
 public slots:
     void work();   
     void decorate();
