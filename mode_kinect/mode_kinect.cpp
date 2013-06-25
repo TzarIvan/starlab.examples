@@ -25,7 +25,7 @@ void mode_kinect::create(){
     drawArea()->camera()->showEntireScene();    
     
     /// create a dockwidget to display the color/depth frames
-    ModePluginDockWidget* dockwidget = new ModePluginDockWidget();
+    ModePluginDockWidget* dockwidget = new ModePluginDockWidget("Kinect Widget",mainWindow(),parent);
     QLabel* colorLabel = new QLabel();
     dockwidget->addWidget(colorLabel);
     connect( parent, SIGNAL(destroyed()), dockwidget, SLOT(deleteLater()) );
